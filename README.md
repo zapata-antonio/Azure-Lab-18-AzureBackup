@@ -3,7 +3,7 @@
 ## Objetivo
 Configurar copias de seguridad de una máquina virtual (VM) en Azure con **Azure Backup** usando un **Recovery Services Vault (RSV)** y, lo más importante, **validar la restauración**.
 
-> 🟦 **Cloud key idea:** Un backup “activado” no sirve si nunca se prueba un restore.  
+> **Cloud key idea:** Un backup “activado” no sirve si nunca se prueba un restore.  
 > En este lab se deja evidencia de **Recovery Point** y de un **restore real** creando una VM nueva.
 
 ---
@@ -34,31 +34,31 @@ Quiero proteger una VM con copias diarias:
 - **Red/Subred:** `vnet-eastus-1` / `snet-eastus-1`  
 - **Redundancia del vault:** **LRS (Local)** (opción más barata, ideal para labs)
 
-> 🟦 **Nota:** Azure Backup **no borra** la VM original cuando restauras.  
+> **Nota:** Azure Backup **no borra** la VM original cuando restauras.  
 > La restauración se hace “en paralelo” (VM nueva) para validar y decidir el cutover sin riesgo.
 
 ---
 
 ## Evidencias (capturas)
-> Formato: miniatura + click para ampliar.
 
 ### 01) RSV creado
-[![RSV creado](images/01-rsv-created.png)](images/01-rsv-created.png)
+[<img src="images/01-rsv-created.png" width="800">](images/01-rsv-created.png)
 
 ### 02) Política diaria y retención
-[![Política backup](images/02-backup-policy.png)](images/02-backup-policy.png)
+[<img src="images/02-backup-policy.png" width="800">](images/02-backup-policy.png)
 
 ### 03) VM protegida (Protected item) + estado
-[![Protected item](images/03-protected-item-status.png)](images/03-protected-item-status.png)
+[<img src="images/03-protected-item-status.png" width="800">](images/03-protected-item-status.png)
 
 ### 04) Recovery Point (última copia “Correcto”)
-[![Recovery point](images/04-recovery-point.png)](images/04-recovery-point.png)
+[<img src="images/04-recovery-point.png" width="800">](images/04-recovery-point.png)
 
 ### 05) Restore ejecutado (job y parámetros)
-[![Restore job](images/05-restore-start.png)](images/05-restore-start.png)
+[<img src="images/05-restore-start.png" width="800">](images/05-restore-start.png)
 
 ### 06) Resultado restore (VM restaurada creada)
-[![Restore result](images/06-restore-result.png)](images/06-restore-result.png)
+[<img src="images/06-restore-result.png" width="800">](images/06-restore-result.png)
+
 
 ---
 
@@ -69,7 +69,7 @@ Quiero proteger una VM con copias diarias:
 2. Seleccionar **Redundancia local (LRS)** para minimizar costes.
 3. Verificar que el vault queda accesible.
 
-✅ Resultado: RSV listo y visible en el portal.
+Resultado: RSV listo y visible en el portal.
 
 ---
 
@@ -79,7 +79,7 @@ Quiero proteger una VM con copias diarias:
    - Retención: definida en la política (lab)
 2. Guardar como `backup-vm`.
 
-✅ Resultado: Política creada y disponible para asignarla a la VM.
+Resultado: Política creada y disponible para asignarla a la VM.
 
 ---
 
@@ -88,7 +88,7 @@ Quiero proteger una VM con copias diarias:
 2. Seleccionar política `backup-vm`.
 3. Confirmar que la VM aparece como **elemento protegido**.
 
-✅ Resultado: VM en estado protegido y asociada a la política.
+Resultado: VM en estado protegido y asociada a la política.
 
 ---
 
@@ -98,7 +98,7 @@ Quiero proteger una VM con copias diarias:
    - **Última copia de seguridad** = Correcto
    - Existe al menos **1 punto de restauración (Recovery Point)**
 
-✅ Resultado: Recovery Point creado y visible.
+Resultado: Recovery Point creado y visible.
 
 ---
 
@@ -115,7 +115,7 @@ En este lab se realiza un restore **sin tocar la VM original**:
    - Importante: el staging **no es** donde “viven” los backups; los recovery points se gestionan por el servicio de Azure Backup.  
    - La storage account se usa como **zona temporal** durante la restauración y para limpieza automática en caso de fallo.
 
-✅ Resultado: Restore completado al 100% y VM restaurada creada y en ejecución.
+Resultado: Restore completado al 100% y VM restaurada creada y en ejecución.
 
 ---
 
