@@ -126,7 +126,7 @@ Resultado: Restore completado al 100% y VM restaurada creada y en ejecución.
 - [x] Existe al menos **1 Recovery Point** (última copia: Correcto)
 - [x] Restore probado creando VM nueva `vm-restore-test-lab18-01` en `rg-restore-lab18`
 
-> 🟦 **Cloud conclusion:** Se valida continuidad de negocio porque hay **Recovery Point** y un **restore real** documentado.
+> **conclusion:** Se valida continuidad de negocio porque hay **Recovery Point** y un **restore real** documentado.
 
 ---
 
